@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory(User::class)->create([
+            'name' => 'admin user',
+            'email' => 'admin@test.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('testtest'),
+            'authority' => 1,
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'user test',
+            'email' => 'user@test.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('testtest'),
+            'authority' => 0,
+        ]);
+    }
+}
